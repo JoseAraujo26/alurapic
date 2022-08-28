@@ -1,5 +1,9 @@
 # Alurapic
 
+## Atenção
+Para visualizar o projeto, é necessário rodar a API que está rodando com a versão 8.17.0 do NodeJs. É recomendado usar essa versão via WSL ou docker.
+Esse projeto está usando a versão 16.13.2 do NodeJs.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
 ## Development server
