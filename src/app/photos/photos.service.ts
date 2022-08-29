@@ -1,17 +1,23 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotosService {
-
+  private api = 'http://localhost:3000'
   photos: IPhotos[] = []
 
   constructor(private http: HttpClient) {}
 
   listFromUser(userName: string) {
-    return this.http.get<IPhotos[]>(`http://localhost:3000/${userName}/photos`)
+    return this.http.get<IPhotos[]>(`${this.api}/${userName}/photos`)
+  }
+
+  listFromUserPaginated(userName: string, page: number) {
+    const params = new HttpParams().append('page', page.toString())
+    console.log(params)
+    return this.http.get<IPhotos[]>(`${this.api}/${userName}/photos`, { params })
   }
 }
 
