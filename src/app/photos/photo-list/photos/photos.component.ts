@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { IPhotos } from '../../photos.service';
 
 @Component({
@@ -6,13 +6,25 @@ import { IPhotos } from '../../photos.service';
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.scss']
 })
-export class PhotosComponent implements OnInit {
+export class PhotosComponent implements OnChanges {
 
   @Input() photos: IPhotos[] = []
+  rows: any[] = []
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(change: SimpleChanges): void {
+    if (change['photos'])
+      this.rows = this.groupColumns(this.photos)
   }
 
+  groupColumns(photos: IPhotos[]) {
+    const newRows: any[] = []
+
+    for (let i = 0; i < photos.length; i += 3) {
+      newRows.push(photos.slice(i, i + 3))
+    }
+
+    return newRows
+  }
 }
