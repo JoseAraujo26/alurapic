@@ -1,34 +1,34 @@
-$image-container: 300px;
+// $image-container: 300px;
 
-.photoContainer {
-  margin: 10px;
-  padding: 10px;
-  background-color: rgb(109, 108, 158);
-  border-radius: 5px;
-  div {
-    display: flex;
-    position: relative;
-    // margin: 10px;
-    width: $image-container;
-    span {
-      position: absolute;
-      // height: 70px;
-      margin-left: 50%;
-      // width: 90%;
-      text-align: center;
-      padding: 10px;
-      margin-top: 50%;
-      transform: translate(-50%, -50%);
-      // justify-items: center;
-      border: 1px solid white;
-      background-color: rgba(0, 0, 0, 0.363);
-      p {
-        color: white;
-        margin-bottom: 0px
-      }
-    }
-    img {
-      width: $image-container;
-    }
-  }
-}
+// .photoContainer {
+//   margin: 10px;
+//   padding: 10px;
+//   background-color: rgb(109, 108, 158);
+//   border-radius: 5px;
+//   div {
+//     display: flex;
+//     position: relative;
+//     // margin: 10px;
+//     width: $image-container;
+//     span {
+//       position: absolute;
+//       // height: 70px;
+//       margin-left: 50%;
+//       // width: 90%;
+//       text-align: center;
+//       padding: 10px;
+//       margin-top: 50%;
+//       transform: translate(-50%, -50%);
+//       // justify-items: center;
+//       border: 1px solid white;
+//       background-color: rgba(0, 0, 0, 0.363);
+//       p {
+//         color: white;
+//         margin-bottom: 0px
+//       }
+//     }
+//     img {
+//       width: $image-container;
+//     }
+//   }
+// }
