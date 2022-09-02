@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { TokenService } from '../token/token.service';
 import { User } from './user';
 import * as jwtDecode from 'jwt-decode'
@@ -9,7 +9,7 @@ import * as jwtDecode from 'jwt-decode'
 })
 export class UserService {
 
-  private userSubject = new Subject<User>()
+  private userSubject = new BehaviorSubject<User>(<User><unknown>null)
 
   constructor(private tokenService: TokenService) {
     this.tokenService.hasToken() && this.decodeAndNotify()
