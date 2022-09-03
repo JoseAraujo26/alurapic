@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validators';
 
 @Component({
   selector: 'app-singup',
@@ -16,30 +17,30 @@ export class SingupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      email: ['', Validators.compose([
+      email: ['', [
         Validators.required,
         Validators.email
-      ])],
-      fullName: ['', Validators.compose([
+      ]],
+      fullName: ['', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(40)
-      ])],
+      ]],
       userName: ['', [
         Validators.required,
-        Validators.pattern(/^[a-z0-9_\-]+$/),
+        lowerCaseValidator,
         Validators.minLength(2),
         Validators.maxLength(30)
       ]],
-      password: ['', Validators.compose([
+      password: ['', [
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(14)
-      ])]
+      ]]
     })
-    setInterval(() => {
-      console.log(this.signupForm.controls['userName'].touched)
-    }, 2000)
+    // setInterval(() => {
+    //   console.log(this.signupForm.controls['userName'].touched)
+    // }, 2000)
   }
 
 }
