@@ -1,0 +1,30 @@
+<h4 class="text-center">Register to embrace a new world!</h4>
+
+<form [formGroup]="signupForm" class="form mt-4">
+  <div class="form-group">
+    <input formControlName="email" type="text" class="form-control" placeholder="E-mail" autofocus>
+    <app-vmessage *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.hasError('required')" text="E-mail is required!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.hasError('email')" text="E-mail invalid!"></app-vmessage>
+  </div>
+  <div class="form-group">
+    <input formControlName="fullName" type="text" class="form-control" placeholder="Full name" autofocus>
+    <app-vmessage *ngIf="signupForm.get('fullName')?.touched && signupForm.get('fullName')?.hasError('required')" text="Full name is required!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('fullName')?.touched && signupForm.get('fullName')?.hasError('minLength')" text="Minimun length is 2"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('fullName')?.touched && signupForm.get('fullName')?.hasError('maxLength')" text="Maximun length is 40"></app-vmessage>
+  </div>
+  <div class="form-group">
+    <input formControlName="userName" type="text" class="form-control" placeholder="User ame" autofocus>
+    <app-vmessage *ngIf="signupForm.get('userName')?.touched && signupForm.get('userName')?.hasError('required')" text="User name is required!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('userName')?.touched && signupForm.get('userName')?.hasError('pattern')" text="Must be lower case"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('userName')?.touched && signupForm.get('userName')?.hasError('minLength')" text="Minimun length is 2"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('userName')?.touched && signupForm.get('userName')?.hasError('maxLength')" text="Maximun length is 30"></app-vmessage>
+  </div>
+  <div class="form-group">
+    <input formControlName="password" type="password" class="form-control" placeholder="Password" autofocus>
+    <app-vmessage *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.hasError('required')" text="Password is required!"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.hasError('minLength')" text="Minimun length is 8"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.hasError('maxLength')" text="Maximun length is 14"></app-vmessage>
+  </div>
+  <button class="btn btn-primary btn-block">Register</button>
+  <p>Already a user? <a [routerLink]="['']">Sing In!</a></p>
+</form>
