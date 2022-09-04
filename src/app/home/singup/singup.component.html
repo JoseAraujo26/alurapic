@@ -2,29 +2,31 @@
 
 <form [formGroup]="signupForm" class="form mt-4">
   <div class="form-group">
-    <input formControlName="email" type="text" class="form-control" placeholder="E-mail" autofocus>
+    <input formControlName="email" type="text" class="form-control" placeholder="E-mail">
     <app-vmessage *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].errors?.['required']" text="E-mail is required!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['email'].touched && signupForm.controls['email'].errors?.['email']" text="E-mail invalid!"></app-vmessage>
   </div>
   <div class="form-group">
-    <input formControlName="fullName" type="text" class="form-control" placeholder="Full name" autofocus>
+    <input formControlName="fullName" type="text" class="form-control" placeholder="Full name">
     <app-vmessage *ngIf="signupForm.controls['fullName'].touched && signupForm.controls['fullName'].errors?.['required']" text="Full name is required!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['fullName'].touched && signupForm.controls['fullName'].errors?.['minlength']" text="Minimun length is 2"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['fullName'].touched && signupForm.controls['fullName'].errors?.['maxlength']" text="Maximun length is 40"></app-vmessage>
   </div>
   <div class="form-group">
-    <input formControlName="userName" type="text" class="form-control" placeholder="User name" autofocus>
+    <input formControlName="userName" type="text" class="form-control" placeholder="User name">
     <app-vmessage *ngIf="signupForm.controls['userName'].touched && signupForm.controls['userName'].errors?.['required']" text="User name is required!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['userName'].touched && signupForm.controls['userName'].errors?.['lowerCase']" text="Must be lower case"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['userName'].touched && signupForm.controls['userName'].errors?.['minlength']" text="Minimun length is 2"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['userName'].touched && signupForm.controls['userName'].errors?.['maxlength']" text="Maximun length is 30"></app-vmessage>
+    <app-vmessage *ngIf="signupForm.controls['userName'].touched && signupForm.controls['userName'].errors?.['userNameTaken']" text="Username already taken"></app-vmessage>
+    <span *ngIf="signupForm.controls['userName'].touched && signupForm.controls['userName'].valid" class="text-success">User available</span>
   </div>
   <div class="form-group">
-    <input formControlName="password" type="password" class="form-control" placeholder="Password" autofocus>
+    <input formControlName="password" type="password" class="form-control" placeholder="Password">
     <app-vmessage *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['required']" text="Password is required!"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['minlength']" text="Minimun length is 8"></app-vmessage>
     <app-vmessage *ngIf="signupForm.controls['password'].touched && signupForm.controls['password'].errors?.['maxlength']" text="Maximun length is 14"></app-vmessage>
   </div>
-  <button [disabled]="signupForm.invalid" class="btn btn-primary btn-block">Register</button>
+  <button [disabled]="signupForm.invalid || signupForm.pending" class="btn btn-primary btn-block">Register</button>
   <p>Already a user? <a [routerLink]="['']">Sing In!</a></p>
 </form>
