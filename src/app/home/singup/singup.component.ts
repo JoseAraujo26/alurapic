@@ -10,7 +10,8 @@ import { UserNotTakenValidatorService } from './user-not-taken-validator.service
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.scss']
+  styleUrls: ['./singup.component.scss'],
+  providers: [ UserNotTakenValidatorService ]
 })
 export class SingupComponent implements OnInit, AfterViewInit {
 
