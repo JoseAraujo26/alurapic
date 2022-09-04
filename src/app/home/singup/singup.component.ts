@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validators';
+import { NewUser } from './new-user';
 import { SingupService } from './singup.service';
 import { UserNotTakenValidatorService } from './user-not-taken-validator.service';
 
@@ -15,7 +17,9 @@ export class SingupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userNotTakenValidator: UserNotTakenValidatorService
+    private userNotTakenValidator: UserNotTakenValidatorService,
+    private singupSerice: SingupService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -45,9 +49,14 @@ export class SingupComponent implements OnInit {
         Validators.maxLength(14)
       ]]
     })
-    // setInterval(() => {
-    //   console.log(this.signupForm.controls['userName'].touched)
-    // }, 2000)
   }
 
+  singUp() {
+    const newUser = this.signupForm.getRawValue() as NewUser
+    this.singupSerice
+      .singUp(newUser)
+      .subscribe(
+        () => this.router.navigate([''])
+      )
+  }
 }
