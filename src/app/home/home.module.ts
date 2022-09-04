@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VmessageModule } from '../shared/components/vmessage/vmessage.module';
 import { RouterModule } from '@angular/router';
 import { SingupComponent } from './singup/singup.component';
+import { HomeComponent } from './home.component';
 
 
 
@@ -12,6 +13,7 @@ import { SingupComponent } from './singup/singup.component';
   declarations: [
     SigninComponent,
     SingupComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,

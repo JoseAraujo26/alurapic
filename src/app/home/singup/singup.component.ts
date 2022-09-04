@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PlataformDetectorService } from 'src/app/core/plataform-detector/plataform-detector.service';
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validators';
 import { NewUser } from './new-user';
 import { SingupService } from './singup.service';
@@ -11,7 +12,9 @@ import { UserNotTakenValidatorService } from './user-not-taken-validator.service
   templateUrl: './singup.component.html',
   styleUrls: ['./singup.component.scss']
 })
-export class SingupComponent implements OnInit {
+export class SingupComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('emailInput') emailInput!: ElementRef<HTMLInputElement>
 
   signupForm!: FormGroup;
 
@@ -19,7 +22,8 @@ export class SingupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userNotTakenValidator: UserNotTakenValidatorService,
     private singupSerice: SingupService,
-    private router: Router
+    private router: Router,
+    private plataformDetectorService: PlataformDetectorService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +53,11 @@ export class SingupComponent implements OnInit {
         Validators.maxLength(14)
       ]]
     })
+  }
+
+  ngAfterViewInit() {
+    this.plataformDetectorService.isPlataformBrowser() &&
+    this.emailInput.nativeElement.focus()
   }
 
   singUp() {
