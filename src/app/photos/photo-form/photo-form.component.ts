@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { PhotosService } from '../photos.service';
 
 @Component({
   selector: 'app-photo-form',
@@ -9,10 +11,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PhotoFormComponent implements OnInit {
 
   photoForm!: FormGroup
-  file!: File | null
+  file!: File
 
   constructor(
-    private formBuilder: FormBuilder
+    private photosService: PhotosService,
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,9 +28,11 @@ export class PhotoFormComponent implements OnInit {
   }
 
   upload() {
-    const dados = this.photoForm.getRawValue()
-    console.log(dados)
-    console.log(this.file)
+    const description = this.photoForm.controls['file'].value
+    const allowComments = this.photoForm.controls['allowComments'].value
+    this.photosService
+      .upload(description, allowComments, this.file)
+      .subscribe(() => this.router.navigate(['']))
   }
 
 }

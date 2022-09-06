@@ -19,6 +19,15 @@ export class PhotosService {
     console.log(params)
     return this.http.get<IPhotos[]>(`${this.api}/${userName}/photos`, { params })
   }
+
+  upload(description: string, allowComments: string, file: File) {
+    const formData = new FormData
+    formData.append('description', description)
+    formData.append('allowComments', allowComments ? 'true' : 'false')
+    formData.append('imageFile', file)
+    console.log('formData', formData)
+    return this.http.post(`${this.api}/photos/upload`, formData)
+  }
 }
 
 export interface IPhotos {
