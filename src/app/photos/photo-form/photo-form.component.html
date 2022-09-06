@@ -3,7 +3,7 @@
     <div class="col-md-6 text-center">
       <input
         formControlName="file"
-        type="file" accept="image"
+        type="file" accept="image/*"
         (change)="file =  $any($event.target).files[0]">
       <app-vmessage
         text="Pleace, select a photo"
