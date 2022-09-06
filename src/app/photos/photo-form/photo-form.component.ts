@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PhotoFormComponent implements OnInit {
 
   photoForm!: FormGroup
+  file!: File | null
 
   constructor(
     private formBuilder: FormBuilder
@@ -20,6 +21,12 @@ export class PhotoFormComponent implements OnInit {
       description: ['', Validators.maxLength(300)],
       allowComments: [true]
     })
+  }
+
+  upload() {
+    const dados = this.photoForm.getRawValue()
+    console.log(dados)
+    console.log(this.file)
   }
 
 }
