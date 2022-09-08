@@ -11,9 +11,9 @@ export class PhotoComponent {
 
   private _url = ''
 
-  @Input() title: string = ''
-  @Input() set url (url: string) {
-    this._url = url.startsWith('data') ? url : `${cloud}/${url}`
+  @Input() title: string | undefined = ''
+  @Input() set url (url: string | undefined) {
+    this._url = url?.startsWith('data') ? url : `${cloud}/${url}`
   }
 
   get url () {
