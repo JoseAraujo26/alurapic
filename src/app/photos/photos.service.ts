@@ -28,6 +28,10 @@ export class PhotosService {
     console.log('formData', formData)
     return this.http.post(`${this.api}/photos/upload`, formData)
   }
+
+  findById(id: string) {
+    return this.http.get<IPhotos>(`${this.api}/photos/${id}`)
+  }
 }
 
 export interface IPhotos {

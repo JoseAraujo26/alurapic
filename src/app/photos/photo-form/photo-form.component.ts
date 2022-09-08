@@ -29,7 +29,7 @@ export class PhotoFormComponent implements OnInit {
   }
 
   upload() {
-    const description = this.photoForm.controls['file'].value
+    const description = this.photoForm.controls['description'].value
     const allowComments = this.photoForm.controls['allowComments'].value
     this.photosService
       .upload(description, allowComments, this.file)
