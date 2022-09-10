@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../user/user';
+import { IUser } from 'src/app/models/user';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UserService } from '../user/user.service';
 })
 export class FooterComponent implements OnInit {
 
-  user$!: Observable<User | null>;
+  user$!: Observable<IUser | null>;
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {

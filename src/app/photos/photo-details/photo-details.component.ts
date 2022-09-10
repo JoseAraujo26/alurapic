@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IPhotos, PhotosService } from '../photos.service';
+import { IPhotos } from 'src/app/models/photo';
+import { PhotoService } from '../photo.service';
 
 @Component({
   selector: 'app-photo-details',
@@ -14,7 +15,7 @@ export class PhotoDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private photosService: PhotosService
+    private photosService: PhotoService
   ) { }
 
   ngOnInit(): void {
