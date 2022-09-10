@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICreateUser } from 'src/app/models/create-user';
+import { ICreateUser } from 'src/app/models/create-user.model';
 
 const API_URL = 'http://localhost:3000'
 

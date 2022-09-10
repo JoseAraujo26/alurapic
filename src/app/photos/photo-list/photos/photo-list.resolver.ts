@@ -5,7 +5,7 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IPhotos } from 'src/app/models/photo';
+import { IPhotos } from 'src/app/models/photo.model';
 
 import { PhotoService } from '../../photo.service';
 

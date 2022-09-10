@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IPhotos } from 'src/app/models/photo';
+import { IPhotos } from 'src/app/models/photo.model';
 
 import { PhotoService } from '../photo.service';
 
