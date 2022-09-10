@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PlataformDetectorService } from 'src/app/core/plataform-detector/plataform-detector.service';
-import { ICreateUser } from 'src/app/models/create-user';
+import { ICreateUser } from 'src/app/models/create-user.model';
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validators';
 import { SignupService } from './signup.service';
 import { UserNotTakenValidatorService } from './user-not-taken-validator.service';
