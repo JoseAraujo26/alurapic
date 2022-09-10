@@ -2,18 +2,18 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PlataformDetectorService } from 'src/app/core/plataform-detector/plataform-detector.service';
+import { ICreateUser } from 'src/app/models/create-user';
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validators';
-import { NewUser } from './new-user';
-import { SingupService } from './singup.service';
+import { SignupService } from './signup.service';
 import { UserNotTakenValidatorService } from './user-not-taken-validator.service';
 
 @Component({
-  selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss'],
   providers: [ UserNotTakenValidatorService ]
 })
-export class SingupComponent implements OnInit, AfterViewInit {
+export class SignupComponent implements OnInit, AfterViewInit {
 
   @ViewChild('emailInput') emailInput!: ElementRef<HTMLInputElement>
 
@@ -22,7 +22,7 @@ export class SingupComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private userNotTakenValidator: UserNotTakenValidatorService,
-    private singupSerice: SingupService,
+    private signupSerice: SignupService,
     private router: Router,
     private plataformDetectorService: PlataformDetectorService
   ) { }
@@ -61,10 +61,10 @@ export class SingupComponent implements OnInit, AfterViewInit {
     this.emailInput.nativeElement.focus()
   }
 
-  singUp() {
-    const newUser = this.signupForm.getRawValue() as NewUser
-    this.singupSerice
-      .singUp(newUser)
+  signUp() {
+    const newUser = this.signupForm.getRawValue() as ICreateUser
+    this.signupSerice
+      .signUp(newUser)
       .subscribe(
         () => this.router.navigate([''])
       )

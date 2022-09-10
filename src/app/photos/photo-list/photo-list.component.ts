@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IPhotos } from 'src/app/models/photo';
 
-import { IPhotos, PhotosService } from '../photos.service';
+import { PhotoService } from '../photo.service';
 
 @Component({
   selector: 'app-photo-list',
@@ -18,7 +19,7 @@ export class PhotoListComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private photoService: PhotosService
+    private photoService: PhotoService
   ) { }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from '../user/user';
+import { IUser } from 'src/app/models/user';
 import { UserService } from '../user/user.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from '../user/user.service';
 })
 export class HeaderComponent {
 
-  user$: Observable<User | null>
+  user$: Observable<IUser | null>
 
   constructor(
     private userService: UserService,

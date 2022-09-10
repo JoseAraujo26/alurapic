@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from '../core/auth/login.guard';
 import { HomeComponent } from './home.component';
 import { SigninComponent } from './signin/signin.component';
-import { SingupComponent } from './singup/singup.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 const routes: Routes = [
@@ -18,8 +18,8 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
-        path: 'singup',
-        component: SingupComponent
+        path: 'signup',
+        component: SignupComponent
       }
     ]
   }

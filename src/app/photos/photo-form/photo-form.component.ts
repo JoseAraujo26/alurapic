@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PhotosService } from '../photos.service';
+import { PhotoService } from '../photo.service';
 
 @Component({
   selector: 'app-photo-form',
@@ -15,7 +15,7 @@ export class PhotoFormComponent implements OnInit {
   preview!: string
 
   constructor(
-    private photosService: PhotosService,
+    private photosService: PhotoService,
     private formBuilder: FormBuilder,
     private router: Router
   ) { }

@@ -5,8 +5,9 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { IPhotos } from 'src/app/models/photo';
 
-import { IPhotos, PhotosService } from '../../photos.service';
+import { PhotoService } from '../../photo.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ import { IPhotos, PhotosService } from '../../photos.service';
 export class PhotoListResolver implements Resolve<Observable<IPhotos[]>> {
 
   constructor (
-    private service: PhotosService
+    private service: PhotoService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IPhotos[]> {

@@ -1,4 +1,4 @@
-export interface NewUser {
+export interface ICreateUser {
   email: string,
   fullName: string,
   userName: string,

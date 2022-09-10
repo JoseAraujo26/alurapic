@@ -1,23 +1,24 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IPhotos as IPhoto } from '../models/photo';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PhotosService {
+export class PhotoService {
   private api = 'http://localhost:3000'
-  photos: IPhotos[] = []
+  photos: IPhoto[] = []
 
   constructor(private http: HttpClient) {}
 
   listFromUser(userName: string) {
-    return this.http.get<IPhotos[]>(`${this.api}/${userName}/photos`)
+    return this.http.get<IPhoto[]>(`${this.api}/${userName}/photos`)
   }
 
   listFromUserPaginated(userName: string, page: number) {
     const params = new HttpParams().append('page', page.toString())
     console.log(params)
-    return this.http.get<IPhotos[]>(`${this.api}/${userName}/photos`, { params })
+    return this.http.get<IPhoto[]>(`${this.api}/${userName}/photos`, { params })
   }
 
   upload(description: string, allowComments: string, file: File) {
@@ -30,17 +31,6 @@ export class PhotosService {
   }
 
   findById(id: string) {
-    return this.http.get<IPhotos>(`${this.api}/photos/${id}`)
+    return this.http.get<IPhoto>(`${this.api}/photos/${id}`)
   }
-}
-
-export interface IPhotos {
-  allowComments: boolean
-  comments: number
-  description: string
-  id: number
-  likes: number
-  postDate: Date
-  url: string
-  userId: number
 }
