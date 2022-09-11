@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Observable } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 
 import { IPhotoComment } from 'src/app/models/photo-comment.model';
 
@@ -32,11 +32,12 @@ export class PhotoCommentsComponent implements OnInit {
 
   save() {
     const comment = this.commentForm.controls['comment'].value as string
-    this.photoService
+    this.comments$ = this.photoService
       .addComment(this.photoId, comment)
-      .subscribe(() => {
+      .pipe(switchMap(() => this.photoService.getComments(this.photoId)))
+      .pipe(tap(() => {
         this.commentForm.reset()
-      })
+      }))
   }
 
 }
