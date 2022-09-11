@@ -38,4 +38,10 @@ export class PhotoService {
   getComments(photoId: number) {
     return this.http.get<IPhotoComment[]>(`${this.api}/photos/${photoId}/comments`)
   }
+
+  addComment(photoId: number, commentText: string) {
+    return this.http.post<IPhotoComment[]>(`${this.api}/photos/${photoId}/comments`, {
+      commentText
+    })
+  }
 }
