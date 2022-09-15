@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IPhotos } from 'src/app/models/photo.model';
+import { IPhoto } from 'src/app/models/photo.model';
 
 import { PhotoService } from '../photo.service';
 
@@ -11,7 +11,7 @@ import { PhotoService } from '../photo.service';
 })
 export class PhotoListComponent implements OnInit {
 
-  photos: IPhotos[] = []
+  photos: IPhoto[] = []
   filter: string = ''
   hasMore: boolean = true
   currentPage: number = 1

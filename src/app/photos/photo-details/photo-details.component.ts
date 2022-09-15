@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { PhotoService } from '../photo.service';
 
-import { IPhotos } from 'src/app/models/photo.model';
+import { IPhoto } from 'src/app/models/photo.model';
 import { IPhotoComment } from 'src/app/models/photo-comment.model';
 import { AlertService } from 'src/app/shared/components/alert/alert.service';
 import { UserService } from 'src/app/core/user/user.service';
@@ -17,7 +17,7 @@ import { UserService } from 'src/app/core/user/user.service';
 })
 export class PhotoDetailsComponent implements OnInit {
 
-  photo$!: Observable<IPhotos>
+  photo$!: Observable<IPhoto>
   comments$!: Observable<IPhotoComment[]>
   photoId!: number;
 
@@ -46,10 +46,21 @@ export class PhotoDetailsComponent implements OnInit {
           this.alertService.success('Photo removed!')
           this.router.navigate(['/user', this.userService.getUserName()])
         },
-          err => {
+        err => {
             console.log(err)
             this.alertService.warning('Could not delete the photo!')
         }
       )
   }
+
+  like(photo: IPhoto) {
+    this.photosService
+      .like(photo.id)
+      .subscribe(liked => {
+        if (liked) {
+          this.photo$ = this.photosService.findById(photo.id)
+        }
+      })
+  }
+
 }

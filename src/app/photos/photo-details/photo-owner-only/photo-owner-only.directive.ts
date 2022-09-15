@@ -1,13 +1,13 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { UserService } from 'src/app/core/user/user.service';
 
-import { IPhotos } from 'src/app/models/photo.model';
+import { IPhoto } from 'src/app/models/photo.model';
 
 @Directive({
   selector: '[appPhotoOwnerOnly]'
 })
 export class PhotoOwnerOnlyDirective implements OnInit {
-  @Input() ownedPhoto!: IPhotos
+  @Input() ownedPhoto!: IPhoto
 
   constructor(
     private element: ElementRef<any>,

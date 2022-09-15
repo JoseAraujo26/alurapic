@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import { IPhotos } from 'src/app/models/photo.model';
+import { IPhoto } from 'src/app/models/photo.model';
 
 @Component({
   selector: 'app-photos',
@@ -8,7 +8,7 @@ import { IPhotos } from 'src/app/models/photo.model';
 })
 export class PhotosComponent implements OnChanges {
 
-  @Input() photos: IPhotos[] = []
+  @Input() photos: IPhoto[] = []
   rows: any[] = []
 
   constructor() { }
@@ -18,7 +18,7 @@ export class PhotosComponent implements OnChanges {
       this.rows = this.groupColumns(this.photos)
   }
 
-  groupColumns(photos: IPhotos[]) {
+  groupColumns(photos: IPhoto[]) {
     const newRows: any[] = []
 
     for (let i = 0; i < photos.length; i += 3) {
