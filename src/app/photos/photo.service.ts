@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { IPhoto as IPhoto } from '../models/photo.model';
 import { IPhotoComment } from '../models/photo-comment.model';
 import { catchError, map, of, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotoService {
-  private api = 'http://localhost:3000'
+  private api = environment.ApiUrl
   photos: IPhoto[] = []
 
   constructor(private http: HttpClient) {}
