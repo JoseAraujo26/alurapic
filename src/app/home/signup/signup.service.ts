@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICreateUser } from 'src/app/models/create-user.model';
+import { environment } from 'src/environments/environment';
 
-const API_URL = 'http://localhost:3000'
+const api = environment.ApiUrl
 
 @Injectable()
 export class SignupService {
@@ -13,10 +14,10 @@ export class SignupService {
   ) { }
 
   checkUserNameTaken(userName: string): Observable<boolean> {
-    return this.http.get<boolean>(`${API_URL}/user/exists/${userName}`)
+    return this.http.get<boolean>(`${api}/user/exists/${userName}`)
   }
 
   signUp(newUser: ICreateUser) {
-    return this.http.post(`${API_URL}/user/signup/`, newUser)
+    return this.http.post(`${api}/user/signup/`, newUser)
   }
 }

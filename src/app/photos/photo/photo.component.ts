@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-const cloud = 'http://localhost:3000/imgs'
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-photo',
   templateUrl: './photo.component.html',
@@ -9,11 +7,11 @@ const cloud = 'http://localhost:3000/imgs'
 })
 export class PhotoComponent {
 
-  private _url = ''
+  private _url!: string
 
-  @Input() title: string | undefined = ''
-  @Input() set url (url: string | undefined) {
-    this._url = url?.startsWith('data') ? url : `${cloud}/${url}`
+  @Input() title!: string
+  @Input() set url (url: string) {
+    this._url = url?.startsWith('data') ? url : `${environment.ApiUrl}/imgs/${url}`
   }
 
   get url () {
