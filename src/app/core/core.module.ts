@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 
 import { RequestInterceptor } from './auth/request.interceptor';
 
+import { AlertModule } from '../shared/components/alert/alert.module';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -15,7 +17,8 @@ import { RequestInterceptor } from './auth/request.interceptor';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    AlertModule
   ],
   exports: [
     HeaderComponent,
