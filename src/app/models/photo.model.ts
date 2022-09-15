@@ -1,4 +1,4 @@
-export interface IPhotos {
+export interface IPhoto {
   allowComments: boolean
   comments: number
   description: string

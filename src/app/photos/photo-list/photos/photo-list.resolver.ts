@@ -5,7 +5,7 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IPhotos } from 'src/app/models/photo.model';
+import { IPhoto } from 'src/app/models/photo.model';
 
 import { PhotoService } from '../../photo.service';
 
@@ -13,13 +13,13 @@ import { PhotoService } from '../../photo.service';
   providedIn: 'root'
 })
 
-export class PhotoListResolver implements Resolve<Observable<IPhotos[]>> {
+export class PhotoListResolver implements Resolve<Observable<IPhoto[]>> {
 
   constructor (
     private service: PhotoService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IPhotos[]> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IPhoto[]> {
     const userName = route.params['userName']
     return this.service.listFromUserPaginated(userName, 1);
   }
