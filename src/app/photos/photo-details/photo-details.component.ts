@@ -7,6 +7,8 @@ import { PhotoService } from '../photo.service';
 
 import { IPhotos } from 'src/app/models/photo.model';
 import { IPhotoComment } from 'src/app/models/photo-comment.model';
+import { AlertService } from 'src/app/shared/components/alert/alert.service';
+import { UserService } from 'src/app/core/user/user.service';
 
 @Component({
   selector: 'app-photo-details',
@@ -22,17 +24,32 @@ export class PhotoDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private photosService: PhotoService,
-    private router: Router
+    private router: Router,
+    private alertService: AlertService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.photoId = this.route.snapshot.params['photoId']
     this.photo$ = this.photosService.findById(this.photoId)
+    this.photo$.subscribe(() => {}, err => {
+      console.log(err)
+      this.router.navigate(['not-found'])
+    })
   }
 
   remove() {
     this.photosService
       .removePhoto(this.photoId)
-      .subscribe(() => this.router.navigate(['']))
+      .subscribe(
+        () => {
+          this.alertService.success('Photo removed!')
+          this.router.navigate(['/user', this.userService.getUserName()])
+        },
+          err => {
+            console.log(err)
+            this.alertService.warning('Could not delete the photo!')
+        }
+      )
   }
 }
