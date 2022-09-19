@@ -65,8 +65,10 @@ export class SignupComponent implements OnInit, AfterViewInit {
     const newUser = this.signupForm.getRawValue() as ICreateUser
     this.signupSerice
       .signUp(newUser)
-      .subscribe(
-        () => this.router.navigate([''])
-      )
+      .subscribe(() => this.router.navigate(['']))
+  }
+
+  verifyInput(formControlName: string, validator: string) {
+    return this.signupForm.controls[formControlName].touched && this.signupForm.controls[formControlName].errors?.[validator]
   }
 }

@@ -45,16 +45,18 @@ export class PhotoFormComponent implements OnInit {
       .pipe(finalize(() => {
         this.router.navigate(['/user', this.userService.getUserName()])
       }))
-      .subscribe((event: HttpEvent<any>) => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.percentDone = Math.round(100 * event.loaded / (event.total ?? 1))
-        } else if (event instanceof HttpResponse) {
-          this.alertService.success('Upload complete', true)
+      .subscribe({
+        next: (event: HttpEvent<any>) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.percentDone = Math.round(100 * event.loaded / (event.total ?? 1))
+          } else if (event instanceof HttpResponse) {
+            this.alertService.success('Upload complete', true)
+          }
+        },
+        error: err => {
+          console.log(err)
+          this.alertService.danger('Upload error')
         }
-      },
-      err => {
-        console.log(err)
-        this.alertService.danger('Upload error')
       })
   }
 

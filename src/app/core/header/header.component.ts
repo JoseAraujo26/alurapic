@@ -10,7 +10,6 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
   user$: Observable<IUser | null>
 
   constructor(
