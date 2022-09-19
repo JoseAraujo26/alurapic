@@ -30,11 +30,10 @@ export class PhotoService {
     formData.append('allowComments', allowComments ? 'true' : 'false')
     formData.append('imageFile', file)
     console.log('formData', formData)
-    return this.http.post(
-      `${this.api}/photos/upload`,
-      formData,
-      { observe: 'events', reportProgress: true }
-    )
+    return this.http.post(`${this.api}/photos/upload`, formData, {
+      observe: 'events',
+      reportProgress: true
+    })
   }
 
   findById(photoId: number) {

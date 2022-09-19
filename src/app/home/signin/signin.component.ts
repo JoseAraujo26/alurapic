@@ -38,15 +38,17 @@ export class SigninComponent implements OnInit, AfterViewInit {
 
     this.authService
       .authenticate(userName, password)
-      .subscribe(() => {
+      .subscribe({
+        next: () => {
           this.router.navigate([`user`, userName])
-        }, error => {
+        },
+        error: error => {
           console.log(error)
           this.loginForm.reset()
           this.plataformDetectorService.isPlataformBrowser() &&
           this.userNameInput.nativeElement.focus()
         }
-      )
+      })
   }
 
 }

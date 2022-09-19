@@ -8,7 +8,6 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root'
 })
 export class UserService {
-
   private userSubject = new BehaviorSubject<IUser | null>(null)
   private userName: string = ''
 
@@ -25,13 +24,6 @@ export class UserService {
     return this.userSubject.asObservable()
   }
 
-  private decodeAndNotify() {
-    const token = this.tokenService.getToken()
-    const user = jwt(<string>token) as IUser
-    this.userName = user.name
-    this.userSubject.next(user)
-  }
-
   logout() {
     this.tokenService.removeToken()
     this.userSubject.next(null)
@@ -43,5 +35,12 @@ export class UserService {
 
   getUserName() {
     return this.userName
+  }
+
+  private decodeAndNotify() {
+    const token = this.tokenService.getToken()
+    const user = jwt(<string>token) as IUser
+    this.userName = user.name
+    this.userSubject.next(user)
   }
 }
