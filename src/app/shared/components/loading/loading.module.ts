@@ -12,7 +12,7 @@ import { LoadingComponent } from './loading.component';
     CommonModule
   ],
   exports: [
-    LoadingModule
+    LoadingComponent
   ]
 })
 export class LoadingModule { }
