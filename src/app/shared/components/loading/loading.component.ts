@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { LoadingType } from './loading';
 import { LoadingService } from './loading.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoadingComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading$ = this.loadingService
-      .Loading
+      .getLoading()
       .pipe(map(loadingType => loadingType.valueOf()))
   }
 }

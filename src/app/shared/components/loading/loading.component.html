@@ -1,1 +1,2 @@
-<hr [ngClass]="{teste: (loading$ | async)}">
+<hr [ngClass]="$any(loading$ | async)">
+<!-- <hr [ngClass]="(loading$ | async) || 'stopped'"> -->
